@@ -1,0 +1,122 @@
+body {
+  background: radial-gradient(circle, #b80000 0%, #600000 100%);
+  font-family: 'Orbitron', sans-serif;
+  color: #fff;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+
+.loading {
+  margin-top: 40px;
+  font-size: 1.2rem;
+  color: #ffcccc;
+}
+
+/*Contenedor Pokédex*/
+.pokedex {
+  width: 300px;
+  margin: 60px auto;
+  background: #d32f2f;
+  border: 3px solid #600000;
+  border-radius: 15px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.6);
+  padding: 15px;
+}
+
+.pokedex-title {
+  font-size: 1.3rem;
+  margin-bottom: 15px;
+  color: #ffeaea;
+  text-shadow: 0 0 5px #ffffff44;
+}
+
+.pokemon-frame {
+  background: linear-gradient(180deg, #111, #1a1a1a);
+  border: 3px solid #00ffff;
+  border-radius: 12px;
+  box-shadow: 0 0 15px #00ffff88;
+  padding: 15px;
+}
+
+/*Nombre*/
+.pokemon-name {
+  color: #00ffff;
+  font-size: 1.4rem;
+  text-shadow: 0 0 6px #00ffffaa;
+  margin-bottom: 10px;
+}
+
+/*Imagen*/
+.pokemon-image {
+  width: 120px;
+  height: auto;
+  margin: 10px 0;
+  background: #00000033;
+  border-radius: 10px;
+  padding: 5px;
+}
+
+/* Estilo del reproductor de audio */
+.pokemon-card audio {
+  width: 250px;
+  height: 25px;             
+  display: block;
+  margin: 10px auto;       
+  outline: none;
+  border: 2px solid #007bff;
+  border-radius: 8px;
+  background-color: #e6f0ff; 
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+
+/*Tipos y Stats*/
+.types h3, .stats h3 {
+  color: #ffcc00;
+  margin-bottom: 5px;
+  font-size: 1rem;
+}
+
+.types ul, .stats ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.types li {
+  display: inline-block;
+  margin: 3px;
+  padding: 4px 10px;
+  border-radius: 8px;
+  font-weight: bold;
+  color: #fff;
+  font-size: 0.85rem;
+}
+
+/*Colores por tipo*/
+.type-normal { background: #858585; }
+.type-grass { background: #78C850; }
+.type-poison { background: #A040A0; }
+.type-fire { background: #F08030; }
+.type-water { background: #6890F0; }
+.type-electric { background: #F8D030; }
+.type-ice { background: #98D8D8; }
+.type-fighting { background: #C03028; }
+.type-ground { background: #E0C068; }
+.type-flying { background: #A890F0; }
+.type-psychic { background: #F85888; }
+.type-bug { background: #A8B820; }
+.type-rock { background: #B8A038; }
+.type-ghost { background: #705898; }
+.type-dark { background: #705848; }
+.type-dragon { background: #7038F8; }
+.type-steel { background: #7f7f8b; }
+.type-fairy { background: #EE99AC; }
+
+/*Estadísticas*/
+.stats li {
+  font-size: 0.9rem;
+  margin: 3px 0;
+  color: #ddd;
+}
