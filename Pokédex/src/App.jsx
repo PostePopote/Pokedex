@@ -4,6 +4,7 @@ import "./Style1.css";
 function Pokemon() {
   const [pokemon, setPokemon] = useState(null);
   const [pokeName, setPokeName] = useState("");
+  const [pokeEntrada, setPokeEntrada] = useState({});
 
   const handleInputChange = (e) => {
     setPokeName(e.target.value);
@@ -16,32 +17,51 @@ function Pokemon() {
       .then((data) => setPokemon(data));
   };
 
+  const especie = () => {
+    if (!pokeName) return;
+    fetch(`https://pokeapi.co/api/v2/pokemon-species/${pokeName.toLowerCase()}`)
+      .then((res) => res.json())
+      .then((data) => {
+        const entryEN = data.flavor_text_entries.find(
+          (entry) => entry.language.name === "en"
+        );
+        if (entryEN) {
+          setPokeEntrada(entryEN.flavor_text.replace(/\f|\n/g, " ")); //Quita que haya saltos raros
+        } else {
+          setPokeEntrada("No Pokédex entries in english");
+        }
+      });
+    }
+
   return (
     <div className="pokedex">
-      <h1 className="pokedex-title">Pokédex</h1>
+      <h1 className="pokedex-title">Pokedex</h1>
 
       <div className="pokemon-frame">
-        <input
-          type="text"
-          value={pokeName}
-          onChange={handleInputChange}
-          placeholder="pichu"
-        />
-        <button onClick={busca}>Buscar</button>
-
         {pokemon && (
           <div className="pokemon-card">
             <h2 className="pokemon-name">{pokemon.name.toUpperCase()}</h2>
-            <img
-              src={pokemon.sprites.front_default}
-              alt={pokemon.name}
-              className="pokemon-image"
-            />
-            <img
-              src={pokemon.sprites.front_shiny}
-              alt={pokemon.name}
-              className="pokemon-image"
-            />
+
+            <div className="pokemon-images">
+              <img
+                src={pokemon.sprites.front_default}
+                alt={pokemon.name}
+                className="pokemon-image"
+              />
+              {pokemon.sprites?.front_female && (
+                <img
+                  src={pokemon.sprites.front_female}
+                  alt={pokemon.name}
+                  className="pokemon-image"
+                />
+              )}
+              <img
+                src={pokemon.sprites.front_shiny}
+                alt={pokemon.name}
+                className="pokemon-image"
+              />
+            </div>
+
             {/* Tipos de los pokémons */}
             <div className="types">
               <h3>Tipos</h3>
@@ -55,17 +75,20 @@ function Pokemon() {
             </div>
             {/* Apartado de datos normales */}
             <p>ID: {pokemon.id}</p>
-            <p>Peso: {pokemon.weight / 10} kg</p>
-            <p>Altura: {pokemon.height / 10} m</p>
-            <p>Habilidad: {pokemon.abilities[0].ability.name}</p>
-            <h3>Sonido</h3>
-            <audio key={pokemon.id}  controls>
-              <source src={pokemon.cries.latest} type="audio/ogg"/>
+            <p>Weight: {pokemon.weight / 10} kg</p>
+            <p>Height: {pokemon.height / 10} m</p>
+            <p>Ability: {pokemon.abilities[0].ability.name}</p>
+            {pokeEntrada && (
+              <p className="pokedex-entry">“{pokeEntrada}”</p>
+            )}
+            <h3>Sound</h3>
+            <audio key={pokemon.id} controls>
+              <source src={pokemon.cries.latest} type="audio/ogg" />
             </audio>
 
             {/* Apartado de Estadisticas */}
             <div className="stats">
-              <h3>Estadisticas</h3>
+              <h3>Stats</h3>
               <ul>
                 {pokemon.stats.map((s) => (
                   <li key={s.stat.name}>
@@ -76,6 +99,11 @@ function Pokemon() {
             </div>
           </div>
         )}
+        <input type="text" value={pokeName} onChange={handleInputChange} placeholder="pichu" className="pokedex-input"/>
+        <button onClick={() => {
+            busca();
+            especie();}}
+          className="pokedex-button" >Buscar</button>
       </div>
     </div>
   );
