@@ -1,5 +1,5 @@
 import { useState } from "react";
-import "./Style1.css";
+import "./style1.css";
 
 function Pokemon() {
   const [pokemon, setPokemon] = useState(null);
