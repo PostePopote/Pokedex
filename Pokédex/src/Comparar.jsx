@@ -51,6 +51,9 @@ function Comparar() {
             <div className="mini-card-stats">
               <h3>Stats</h3>
               <ul>
+                {/* Se recorre el arreglo dado por la API
+                Por cada stats se crea un "li", se pone como key "stats" 
+                para que unicamente recorra esa parte.*/}
                 {pokemon.stats.map((s) => (
                   <li key={s.stat.name}>
                     <strong>{s.stat.name}:</strong> {s.base_stat}

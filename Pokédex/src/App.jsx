@@ -38,16 +38,21 @@ function Pokemon() {
       <h1 className="pokedex-title">Pokedex</h1>
 
       <div className="pokemon-frame">
+        {/* unicamente renderizara el apartado si pokemon tiene algun valor */}
         {pokemon && (
           <div className="pokemon-card">
             <h2 className="pokemon-name">{pokemon.name.toUpperCase()}</h2>
 
             <div className="pokemon-images">
+              {pokemon.sprites?.front_default &&(
               <img
                 src={pokemon.sprites.front_default}
                 alt={pokemon.name}
                 className="pokemon-image"
               />
+              )}
+              {/* Solamente se mostrara el sprite si es que posee algun valor 
+              si se busca algun pokémon que no tenga diferencia de genero simplemente no se renderizara*/}
               {pokemon.sprites?.front_female && (
                 <img
                   src={pokemon.sprites.front_female}
@@ -67,6 +72,8 @@ function Pokemon() {
               <h3>Tipos</h3>
               <ul>
                 {pokemon.types.map((t) => (
+                  // se pone el type-&{} porque dependiendo del nombre 
+                  // que tenga el tipo sera el fondo
                   <li key={t.type.name} className={`type-${t.type.name}`}>
                     {t.type.name}
                   </li>
