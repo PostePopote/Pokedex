@@ -1,5 +1,6 @@
 import { useState } from "react";
 import "./style1.css";
+import { Link } from "react-router-dom";
 
 function Pokemon() {
   const [pokemon, setPokemon] = useState(null);
@@ -111,6 +112,9 @@ function Pokemon() {
             busca();
             especie();}}
           className="pokedex-button" >Buscar</button>
+      </div>
+      <div>
+        <Link to="/"  className="boton-pokedex">Volver</Link>
       </div>
     </div>
   );
