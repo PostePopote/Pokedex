@@ -1,17 +1,29 @@
 @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
 
 body {
-  background: url("./assets/fondo.jpg");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
   font-family: 'Press Start 2P', sans-serif;
   text-transform: uppercase;
   color: #fff;
   text-align: center;
   margin: 0;
   padding: 0;
+  background-color: #000;
+}
+
+body.bg-principal,
+body.bg-secondary {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+body.bg-principal {
+  background-image: url("./assets/principal.jpg");
+}
+
+body.bg-secondary {
+  background-image: url("./assets/fondo.jpg");
 }
 
 /*Contenedor principal*/
