@@ -7,7 +7,7 @@ function principal() {
     <>
         <h1 className="titulo">Inicio Pokedex</h1>
         <div>
-            <Link to="/Pokédex" className="boton-pokedex">Pokédex normal</Link>
+            <Link to="/Pokedex" className="boton-pokedex">Pokédex normal</Link>
         </div>
         <p></p>
         <div>
@@ -15,7 +15,7 @@ function principal() {
         </div>
         <p></p>
         <div>
-            
+            <Link to="/Buscar" className="boton-pokedex">Buscar por ID</Link>
         </div>
     </>
     );

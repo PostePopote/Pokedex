@@ -1,8 +1,8 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import swal from "sweetalert2";
 import pokeballvacia from "./assets/Pokeball_Vacia.png";
 import "./Comparar.css";
-import { Link } from "react-router-dom";
 
 function Comparar() {
   //pokename es para obtener el nombre dado en el input

@@ -1,0 +1,57 @@
+/* Contenedor principal del buscador */
+.buscar-container {
+  width: 60%;
+  margin: 50px auto;
+  background: rgba(0, 0, 0, 0.55);
+  border: 3px solid #00ffff;
+  border-radius: 15px;
+  padding: 25px;
+  box-shadow: 0 0 15px #00ffff88;
+}
+
+/* Título principal */
+.buscar-container h1 {
+  font-size: 1.3rem;
+  margin-bottom: 25px;
+  color: #00ffff;
+  text-shadow: 0 0 6px #00ffffaa;
+}
+
+/* Input con estilo igual al global pokedex-input */
+.buscar-input {
+  background: rgba(0, 0, 40, 0.6);
+  border: 2px solid #00ffff;
+  border-radius: 8px;
+  padding: 10px 14px;
+  color: #ffffff;
+  letter-spacing: 1px;
+  outline: none;
+  width: 240px;
+  box-shadow: 0 0 10px #00ffffaa;
+}
+
+/* Sin animación en focus */
+.buscar-input:focus {
+  box-shadow: 0 0 12px #00ffffcc;
+}
+
+/* Recuadro de generaciones */
+.gen-box {
+  background: #d32f2f;
+  border: 3px solid #600000;
+  border-radius: 12px;
+  padding: 20px;
+  margin-top: 30px;
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  box-shadow: 0 0 10px #00000088;
+}
+
+.gen-box h3 {
+  margin: 8px 0;
+  color: #ffeaea;
+  text-shadow: 0 0 5px #ffffff44;
+  font-size: 0.75rem;
+  letter-spacing: 1px;
+}

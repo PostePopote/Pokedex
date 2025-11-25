@@ -32,7 +32,7 @@ function Pokemon() {
           setPokeEntrada("No Pokédex entries in english");
         }
       });
-    }
+  };
 
   return (
     <div className="pokedex">
@@ -45,27 +45,31 @@ function Pokemon() {
             <h2 className="pokemon-name">{pokemon.name.toUpperCase()}</h2>
 
             <div className="pokemon-images">
+              {/* Sprite normal */}
               {pokemon.sprites?.front_default &&(
-              <img
-                src={pokemon.sprites.front_default}
-                alt={pokemon.name}
-                className="pokemon-image"
-              />
+                <img
+                  src={pokemon.sprites.front_default}
+                  alt={pokemon.name}
+                  className="pokemon-image"
+                />
               )}
               {/* Solamente se mostrara el sprite si es que posee algun valor 
               si se busca algun pokémon que no tenga diferencia de genero simplemente no se renderizara*/}
               {pokemon.sprites?.front_female && (
                 <img
                   src={pokemon.sprites.front_female}
-                  alt={pokemon.name}
+                  alt={pokemon.name + " female"}
                   className="pokemon-image"
                 />
               )}
-              <img
-                src={pokemon.sprites.front_shiny}
-                alt={pokemon.name}
-                className="pokemon-image"
-              />
+              {/* Sprite shiny */}
+              {pokemon.sprites?.front_shiny &&(
+                <img
+                  src={pokemon.sprites.front_shiny}
+                  alt={pokemon.name + " shiny"}
+                  className="pokemon-image"
+                />
+              )}
             </div>
 
             {/* Tipos de los pokémons */}
@@ -73,7 +77,7 @@ function Pokemon() {
               <h3>Tipos</h3>
               <ul>
                 {pokemon.types.map((t) => (
-                  // se pone el type-&{} porque dependiendo del nombre 
+                  // se pone el type-&{} porque dependiendo del nombre
                   // que tenga el tipo sera el fondo
                   <li key={t.type.name} className={`type-${t.type.name}`}>
                     {t.type.name}
@@ -81,18 +85,19 @@ function Pokemon() {
                 ))}
               </ul>
             </div>
+
             {/* Apartado de datos normales */}
             <p>ID: {pokemon.id}</p>
             <p>Weight: {pokemon.weight / 10} kg</p>
             <p>Height: {pokemon.height / 10} m</p>
             <p>Ability: {pokemon.abilities[0].ability.name}</p>
-            {pokeEntrada && (
-              <p className="pokedex-entry">“{pokeEntrada}”</p>
-            )}
+            {pokeEntrada && <p className="pokedex-entry">“{pokeEntrada}”</p>}
             <h3>Sound</h3>
-            <audio key={pokemon.id} controls>
-              <source src={pokemon.cries.latest} type="audio/ogg" />
-            </audio>
+            {pokemon.cries?.latest &&(
+              <audio key={pokemon.id} controls>
+                <source src={pokemon.cries.latest} type="audio/ogg" />
+              </audio>
+            )}
 
             {/* Apartado de Estadisticas */}
             <div className="stats">
@@ -107,14 +112,28 @@ function Pokemon() {
             </div>
           </div>
         )}
-        <input type="text" value={pokeName} onChange={handleInputChange} placeholder="pichu" className="pokedex-input"/>
-        <button onClick={() => {
+        <input
+          type="text"
+          value={pokeName}
+          onChange={handleInputChange}
+          placeholder="pichu"
+          className="pokedex-input"
+        />
+        <button
+          onClick={() => {
             busca();
-            especie();}}
-          className="pokedex-button" >Buscar</button>
+            especie();
+          }}
+          className="pokedex-button"
+        >
+          Buscar
+        </button>
       </div>
+      <p></p>
       <div>
-        <Link to="/"  className="boton-pokedex">Volver</Link>
+        <Link to="/" className="boton-pokedex">
+          Volver
+        </Link>
       </div>
     </div>
   );
