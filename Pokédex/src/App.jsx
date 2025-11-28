@@ -46,7 +46,7 @@ function Pokemon() {
 
             <div className="pokemon-images">
               {/* Sprite normal */}
-              {pokemon.sprites?.front_default &&(
+              {pokemon.sprites?.front_default && (
                 <img
                   src={pokemon.sprites.front_default}
                   alt={pokemon.name}
@@ -63,7 +63,7 @@ function Pokemon() {
                 />
               )}
               {/* Sprite shiny */}
-              {pokemon.sprites?.front_shiny &&(
+              {pokemon.sprites?.front_shiny && (
                 <img
                   src={pokemon.sprites.front_shiny}
                   alt={pokemon.name + " shiny"}
@@ -87,13 +87,19 @@ function Pokemon() {
             </div>
 
             {/* Apartado de datos normales */}
-            <p>ID: {pokemon.id}</p>
-            <p>Weight: {pokemon.weight / 10} kg</p>
-            <p>Height: {pokemon.height / 10} m</p>
-            <p>Ability: {pokemon.abilities[0].ability.name}</p>
-            {pokeEntrada && <p className="pokedex-entry">“{pokeEntrada}”</p>}
+            {pokemon && (
+              <>
+                <p>ID: {pokemon.id}</p>
+                <p>Weight: {(pokemon.weight ?? 0) / 10} kg</p>
+                <p>Height: {(pokemon.height ?? 0) / 10} m</p>
+                <p>Ability: {pokemon.abilities?.[0]?.ability?.name ?? "N/A"}</p>
+                {pokeEntrada && (
+                  <p className="pokedex-entry">“{pokeEntrada}”</p>
+                )}
+              </>
+            )}
             <h3>Sound</h3>
-            {pokemon.cries?.latest &&(
+            {pokemon.cries?.latest && (
               <audio key={pokemon.id} controls>
                 <source src={pokemon.cries.latest} type="audio/ogg" />
               </audio>

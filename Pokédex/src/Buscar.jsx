@@ -34,6 +34,9 @@ function Buscar() {
         <h3>Septima = 722 - 809</h3>
         <h3>Octava = 810 - 905</h3>
         <h3>Novena = 906 - 1025</h3>
+        <h3>Si quiere ver Pokémons "especiales" como 
+        los megas o formas alternativas debe buscarlas 
+        con la Pokédex normal</h3>
       </div>
 
       <Link to="/" className="boton-pokedex">
